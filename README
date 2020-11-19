@@ -1,0 +1,29 @@
+Folders:
+	- example_from_paper: it contains the (fixed) SANER-example, the instrumenter jar and the modified pom.xml file
+	
+	- base and algorithms: python (FL) codes
+
+
+
+Files:
+	- trcBinary_2_freq_converter.py -c [coverage folder] -o [test-method matrix csv]: it parses the binary trc files (and the test results) and creates the (freq.) coverage matrix
+
+	- trcBinary_2_callStack.py -c [coverage folder] -o [test-stack matrix csv]: it parses the binary trc files (and the test results) and creates the call-stack matrix
+
+	- callStack_2_freq_converter.py -i [test-stack matrix csv] -o [test-method matrix csv]: it converts the call-stack matrix to freq. matrix
+
+	- main.py -f [test-method matrix csv] -b [buggy method(s)]: it calculates the fl-scores and the fl ranks (based on matrics.csv)
+	
+	
+	
+Steps of the FL algorithm:
+
+	1) cd ./example_from_paper/junitmavenexample
+
+	2) mvn clean test -> it generates the coverage folder and the trc (bin) files. This folder will be the input of the trcBinary_2_freq_converter.py
+
+	3) trcBinary_2_freq_converter.py -c [coverage folder] -o [test_method_matrix.csv] -> it generates one csv matrix. It will be the input of the main.py
+
+	4) main.py -f [coverage matrix csv] -b [buggy method(s)]
+
+
